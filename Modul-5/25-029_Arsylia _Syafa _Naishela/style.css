@@ -1,0 +1,182 @@
+/* ==========================================================
+   style.css - Tampilan sederhana (gaya Bootstrap)
+   Cara pakai: tambahkan baris ini di dalam <head> tiap file PHP:
+   <link rel="stylesheet" href="style.css">
+   ========================================================== */
+
+
+/* ---------- 1. WARNA (ubah di sini kalau mau ganti) ---------- */
+:root {
+    --biru: #337ab7;        /* warna judul */
+    --biru-muda: #d9edf7;   /* warna header tabel */
+    --hijau: #5cb85c;       /* tombol Tambah, Simpan, Update */
+    --oranye: #e8650a;      /* tombol Edit */
+    --merah: #c9302c;       /* tombol Hapus, Batal */
+    --garis: #dddddd;       /* warna garis */
+}
+
+
+/* ---------- 2. HALAMAN ---------- */
+body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    color: #555555;
+    max-width: 960px;       /* lebar maksimal halaman */
+    margin: 30px auto;      /* auto = ditaruh di tengah */
+    padding: 0 20px;
+
+    /* Dua kolom: kiri untuk judul, kanan untuk tombol "Tambah" */
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+/* Semua isi halaman memakai lebar penuh (kedua kolom) */
+body > * {
+    grid-column: 1 / -1;
+}
+
+/* Sembunyikan <br> supaya jarak tidak berantakan */
+br {
+    display: none;
+}
+
+
+/* ---------- 3. JUDUL ---------- */
+h2 {
+    color: var(--biru);
+    font-size: 30px;
+    font-weight: normal;
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--garis);   /* garis di bawah judul */
+}
+
+
+/* ---------- 4. TOMBOL (semua link & button) ---------- */
+a {
+    text-decoration: none;
+}
+
+/* Gaya dasar tombol */
+button,
+a[href^="tambah_supplier"],
+a[href^="edit_supplier"],
+a[href^="hapus_supplier"],
+form a {
+    display: inline-block;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Warna masing-masing tombol */
+button,
+a[href^="tambah_supplier"] { background: var(--hijau); }
+a[href^="edit_supplier"]   { background: var(--oranye); }
+a[href^="hapus_supplier"],
+form a                     { background: var(--merah); }   /* "Batal" */
+
+/* Warna sedikit gelap saat mouse di atas tombol */
+button:hover,
+a[href^="tambah_supplier"]:hover,
+a[href^="edit_supplier"]:hover,
+a[href^="hapus_supplier"]:hover,
+form a:hover {
+    filter: brightness(0.9);
+}
+
+/* Tombol "Tambah" ditaruh di kanan, sejajar dengan judul */
+a[href^="tambah_supplier"] {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+/* Link "Kembali" */
+a[href="pelanggan.php"] {
+    color: var(--biru);
+    margin-top: 20px;
+    justify-self: start;
+}
+
+
+/* ---------- 5. TABEL ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;   /* garis antar sel menyatu */
+}
+
+th, td {
+    border: 0;
+    border-bottom: 1px solid var(--garis);
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background: var(--biru-muda);   /* header biru muda */
+    color: #333333;
+}
+
+/* Kolom terakhir (Aksi): hilangkan tanda "|" antar tombol */
+td:last-child {
+    font-size: 0;
+}
+
+td:last-child a {
+    margin-right: 6px;
+}
+
+
+/* ---------- 6. FORM (halaman Tambah & Edit) ---------- */
+form {
+    max-width: 560px;
+    margin: 20px auto;
+}
+
+/* Tiap baris: label di kiri (rata kanan, tebal), kolom isian di kanan */
+form p {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    column-gap: 16px;
+    align-items: center;
+    margin: 0 0 15px;
+    font-weight: bold;
+    text-align: right;
+}
+
+input[type="text"],
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: normal;
+    color: #555555;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+/* Kotak isian berubah warna saat diklik */
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+textarea {
+    height: 80px;
+}
+
+/* Tombol Simpan/Update & Batal sejajar dengan kolom isian */
+form button {
+    margin-left: 116px;     /* 100px label + 16px jarak */
+    margin-right: 5px;
+}
