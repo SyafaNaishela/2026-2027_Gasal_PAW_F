@@ -40,7 +40,7 @@ $query = mysqli_query($koneksi, "SELECT * FROM supplier ORDER BY id ASC");
             </a>
         </td>
     </tr>
-    <?php } ?>
+    ?>
 
 </table>
 
