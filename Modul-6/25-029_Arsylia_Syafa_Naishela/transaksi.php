@@ -26,7 +26,7 @@ $pelanggan = mysqli_query($koneksi, "SELECT * FROM pelanggan");
 
 $transaksi = mysqli_query($koneksi, "
     SELECT transaksi.*, pelanggan.nama
-    FROM transaksi
+    FROM transaksi 
     JOIN pelanggan ON transaksi.pelanggan_id = pelanggan.id
     ORDER BY transaksi.id DESC
 ");
