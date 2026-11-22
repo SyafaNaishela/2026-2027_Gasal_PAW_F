@@ -46,8 +46,6 @@ $ringkasan = mysqli_fetch_assoc(
     mysqli_stmt_get_result($query_total)
 );
 
-
-// Query rekapitulasi berdasarkan tanggal
 $query_rekap = mysqli_prepare($koneksi, "
     SELECT
         DATE(waktu_transaksi) AS tanggal,
